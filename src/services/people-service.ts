@@ -1,12 +1,6 @@
 import { SWAPIClient } from "../components/SWAPIClient-component";
 import { Person } from "../models/person-model";
 
-// export function getPeople() {
-//   return SWAPIClient.get("people").then<Person[]>(
-//     (response) => response.data.result as Person[]
-//   );
-// }
-
 /**
  * Función que obtiene todos los personajes de la API de Star Wars (SWAPI).
  * @returns Todos los personajes.
