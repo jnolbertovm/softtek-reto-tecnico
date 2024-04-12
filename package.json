@@ -1,0 +1,33 @@
+{
+  "name": "jnvm-softtek-reto-tenico",
+  "version": "1.0.0",
+  "description": "Softtek - Reto Técnico - JNVM",
+  "scripts": {
+    "dev": "serverless offline",
+    "deploy": "serverless deploy",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Nolberto Vilchez <jnolbertovm@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.137",
+    "@types/http-errors": "^2.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/uuid": "^9.0.8",
+    "esbuild": "^0.20.2",
+    "jest": "^29.7.0",
+    "serverless": "^3.38.0",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-offline": "^13.3.3",
+    "ts-jest": "^29.1.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.554.0",
+    "@aws-sdk/lib-dynamodb": "^3.554.0",
+    "@middy/core": "^5.3.2",
+    "axios": "^1.6.8",
+    "http-errors": "^2.0.0",
+    "uuid": "^9.0.1"
+  }
+}

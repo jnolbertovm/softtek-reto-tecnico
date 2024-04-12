@@ -1,0 +1,67 @@
+service: jnvm-softtek-reto-tenico
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-2:339712742751:table/peopleTable
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  getPeople:
+    handler: src/functions/getPeople-function.handler
+    events:
+      - httpApi:
+          path: /personajes
+          method: GET
+  getPerson:
+    handler: src/functions/getPerson-function.handler
+    events:
+      - httpApi:
+          path: /personajes/{id}
+          method: GET
+  createPerson:
+    handler: src/functions/createPerson-function.handler
+    events:
+      - httpApi:
+          path: /personajes
+          method: POST
+  updatePerson:
+    handler: src/functions/updatePerson-function.handler
+    events:
+      - httpApi:
+          path: /personajes/{id}
+          method: PUT
+  deletePerson:
+    handler: src/functions/deletePerson-function.handler
+    events:
+      - httpApi:
+          path: /personajes/{id}
+          method: DELETE
+
+plugins:
+  - serverless-offline
+  - serverless-esbuild
+
+resources:
+  Resources:
+    peopleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: peopleTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
